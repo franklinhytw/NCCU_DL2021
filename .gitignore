@@ -1,0 +1,5 @@
+emnist/*
+**/.ipynb_checkpoints/*
+**/saved_model/*
+**/logs/*
+**/log/*
