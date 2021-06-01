@@ -43,8 +43,8 @@ model.fit(
 
 ### \#Model Improvement
 
-#### Improvement Model 1
-![Improvement Model 1](image/improvement_1_model.png)
+#### Improvement Model
+![Improvement Model](image/improvement_model.png)
 ##### Parameters
 ```
 model_2 = tf.keras.Sequential([
