@@ -70,10 +70,10 @@ model_2.fit(train_prefetch, epochs=5, validation_data=valid_prefetch)
 ![Testing_Screen_Capture](image/improvement_1_evaluate.png)
 
 ##### Note
-> 將 MaxPool2D 改為 AveragePooling2D <br>
-> 增加 Dropout 的數量 ***(+0.05)*** <br>
-> Convolution 的 Filter 與 kernel 數量**調低** <br>
-> 準確率下降 **0.0025**
+> * 移除一層 128 的 LSTM <br>
+> * 移除 Dropout <br>
+> * 輸出層的 Activation 改為 sigmoid <br>
+> * **測試資料的準確率不變**
 
 ### \#Training Procedure
 #### Baseline Model
@@ -86,5 +86,17 @@ model_2.fit(train_prefetch, epochs=5, validation_data=valid_prefetch)
 ![Confusion Matrix](image/confusion_matrix.png)
 
 #### CONCLUSION
-因為 "testdata.manual.2009.06.14.csv" 測試資料中帶有中性詞分類(Label = 2)，且有139筆
-訓練資料缺乏中性詞性的因素，難以準確判斷，故忽略中性資料的話最高準確率為 (497-139) / 497 = **0.7203**
+因為 "testdata.manual.2009.06.14.csv" 測試資料中帶有中性詞分類(Label = 2)，且有139筆，
+<br>
+訓練資料缺乏中性詞性的因素，難以準確判斷，故忽略中性資料的話最高準確率為 (497-139) / 497 = **0.7203**，
+<br>
+故準確率必定小於**0.72**，
+<br>
+透過 Confusion Matrix 可以發現，中性詞(Label = 1)完全辨識不到，因為 Label = 1 輸出層的 Node weight 不足以激發。
+<br>
+* 負面詞性有 131 被準確判斷
+* 正面詞性有 63 被準確判斷
+* 有 119 個正面詞性被**誤判**成中性詞
+* 有 19 個負面詞性被**誤判**成中性詞
+* 有 46 個正面詞性被**誤判**成負面詞
+* 有 19 個負面詞性被**誤判**成正面詞
