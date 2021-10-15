@@ -1,6 +1,4 @@
 # Music Generator
 ##### 109971014 林翰陽
 
-## 研究動機
-## 框架應用
-## 結論
+109971014_林翰陽_MusicGenerator.pdf
